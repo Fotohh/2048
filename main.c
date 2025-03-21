@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "grid.h"
+#include "game.h"
 #include "window.h"
 
 
-void update(windowattr* win, grid* g) {
+void update(windowattr* win, game_inst* g) {
 
 
     if(win->active) return;
@@ -28,7 +28,7 @@ void on_exit() {
 
 int main(void) {
     windowattr win = create_window(500, 500, "Hello World", 60);
-    grid g = {};
+    game_inst g = {};
     update(&win, &g);
     return 0;
 }

@@ -9,7 +9,7 @@ find_package(raylib CONFIG REQUIRED)
 add_executable(c2048 main.c
         window.c
         window.h
-        grid.h
-        grid.c)
+        game.h
+        game.c)
 
 target_link_libraries(c2048 PRIVATE raylib)
