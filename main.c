@@ -25,7 +25,8 @@ void update(windowattr* win, game_inst* g) {
                 move_left(g);
                 break;
             case KEY_RIGHT:
-
+                printf("RIGHT\n");
+                move_right(g);
                 break;
             default:
                 break;

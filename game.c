@@ -22,6 +22,7 @@ void draw_grid(const game_inst* instance) {
 
 }
 
+
 void move_down(game_inst* instance) {
     for(int x = 0; x < 4; x++) {
         int lower_bound = 3;
@@ -80,7 +81,7 @@ void move_up(game_inst* instance) {
 void move_left(game_inst* instance) {
     for(int y = 0; y < 4; y++) {
         int left_bound = 0;
-        int left_value = instance->values[0, y];
+        int left_value = instance->values[0][y];
         for(int x = 1; x < 4; x++) {
 
             const int current_value = instance->values[x][y];
@@ -88,18 +89,47 @@ void move_left(game_inst* instance) {
             if(left_bound >= 2) break;
 
             if(left_value == EMPTY_SQUARE) {
-                instance->values[x][left_bound] = current_value;
+                instance->values[left_bound][y] = current_value;
                 instance->values[x][y] = EMPTY_SQUARE;
                 left_value = current_value;
             }else if(left_value == current_value) {
-                instance->values[x][left_bound] *= 2;
+                instance->values[left_bound][y] *= 2;
                 instance->values[x][y] = EMPTY_SQUARE;
                 left_value *=2;
             }else if(left_value != current_value){
                 left_bound++;
                 instance->values[x][y] = EMPTY_SQUARE;
-                instance->values[x][left_bound] = current_value;
+                instance->values[left_bound][y] = current_value;
                 left_value = current_value;
+            }
+
+        }
+    }
+}
+
+void move_right(game_inst* instance) {
+    for(int y = 0; y < 4; y++) {
+        int right_bound = 3;
+        int right_value = instance->values[3][y];
+        for(int x = 2; x >= 0; x--) {
+
+            const int current_value = instance->values[x][y];
+            if(current_value == EMPTY_SQUARE) continue;
+            if(right_bound < 2) break;
+
+            if(right_value == EMPTY_SQUARE) {
+                instance->values[right_bound][y] = current_value;
+                instance->values[x][y] = EMPTY_SQUARE;
+                right_value = current_value;
+            }else if(right_value == current_value) {
+                instance->values[right_bound][y] *= 2;
+                instance->values[x][y] = EMPTY_SQUARE;
+                right_value *=2;
+            }else if(right_value != current_value){
+                right_bound--;
+                instance->values[x][y] = EMPTY_SQUARE;
+                instance->values[right_bound][y] = current_value;
+                right_value = current_value;
             }
 
         }

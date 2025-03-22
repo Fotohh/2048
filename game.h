@@ -3,10 +3,10 @@
 #define GRID_H
 
 constexpr int EMPTY_SQUARE = 0;
-constexpr int UP[2] = {0, -1};
-constexpr int DOWN[2] = {0, 1};
-constexpr int RIGHT[2] = {1, 0};
-constexpr int LEFT[2] = {-1, 0};
+// constexpr int UP[2] = {0, -1};
+// constexpr int DOWN[2] = {0, 1};
+// constexpr int RIGHT[2] = {1, 0};
+// constexpr int LEFT[2] = {-1, 0};
 
 #include "raylib.h"
 
@@ -26,5 +26,7 @@ void move_up(game_inst* instance);
 void move_down(game_inst* instance);
 
 void move_left(game_inst* instance);
+
+void move_right(game_inst* instance);
 
 #endif
