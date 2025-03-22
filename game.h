@@ -29,4 +29,8 @@ void move_left(game_inst* instance);
 
 void move_right(game_inst* instance);
 
+void init(game_inst* inst);
+
+int random(int upper, int lower);
+
 #endif

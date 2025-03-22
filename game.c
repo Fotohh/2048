@@ -1,6 +1,8 @@
 #include "game.h"
+#include "random.c"
 
 #include <stdlib.h>
+#include <time.h>
 
 void draw_grid(const game_inst* instance) {
 
@@ -9,7 +11,7 @@ void draw_grid(const game_inst* instance) {
         for(int x = 0; x < 4; x++) {
             const Rectangle rec = {grid_x, grid_y, 80, 80};
             DrawRectangleRoundedLines(rec, 0.2f, 5, 2.0f, BLACK);
-            const int value = instance->values[i][x];
+            const int value = instance->values[x][i];
             char str[5];
             itoa(value, str, 10);
             DrawText(str, grid_x + 20, grid_y + 10, 30, BLACK);
@@ -20,6 +22,28 @@ void draw_grid(const game_inst* instance) {
         grid_x = 150;
     }
 
+}
+
+int random(const int upper, const int lower) {
+    return rand() % (upper - lower + 1) + lower;
+}
+
+void init(game_inst* inst) {
+    for(int i = 0; i < 4; i++) {
+        for(int a = 0; a < 4; a++) {
+            if(inst->values[a][i] == EMPTY_SQUARE) {
+                srand(time(NULL));
+                const int generated_value = random(6, 1);
+                int value;
+                if(generated_value == 2) {
+                    value = 2;
+                }else if(generated_value == 4) {
+                    value = 4;
+                }else value = 0;
+                inst->values[a][i] = value;
+            }
+        }
+    }
 }
 
 /*
