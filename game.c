@@ -9,7 +9,7 @@ void draw_grid(const game_inst* instance) {
         for(int x = 0; x < 4; x++) {
             const Rectangle rec = {grid_x, grid_y, 80, 80};
             DrawRectangleRoundedLines(rec, 0.2f, 5, 2.0f, BLACK);
-            const int value = instance->values[x][i];
+            const int value = instance->values[i][x];
             char str[5];
             itoa(value, str, 10);
             DrawText(str, grid_x + 20, grid_y + 10, 30, BLACK);
@@ -25,7 +25,7 @@ void draw_grid(const game_inst* instance) {
 /*
  *
  * If you're reading this file you might've noticed I
- * swapped x and y in the lists, thus making
+ * swapped x and y in the array, thus making
  * my life painful. Yes I realized I did it,
  * and no I'm too lazy to fix it.
  *
