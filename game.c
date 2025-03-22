@@ -24,7 +24,7 @@ void draw_grid(const game_inst* instance) {
 
 /*
  *
- * If you're reading this you might've noticed I
+ * If you're reading this file you might've noticed I
  * swapped x and y in the lists, thus making
  * my life painful. Yes I realized I did it,
  * and no I'm too lazy to fix it.
