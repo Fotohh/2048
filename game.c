@@ -1,8 +1,6 @@
 #include "game.h"
-#include "random.c"
 
 #include <stdlib.h>
-#include <time.h>
 
 void draw_grid(const game_inst* instance) {
 
@@ -32,7 +30,6 @@ void init(game_inst* inst) {
     for(int i = 0; i < 4; i++) {
         for(int a = 0; a < 4; a++) {
             if(inst->values[a][i] == EMPTY_SQUARE) {
-                srand(time(NULL));
                 const int generated_value = random(6, 1);
                 int value;
                 if(generated_value == 2) {

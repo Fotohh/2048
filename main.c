@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "game.h"
 #include "window.h"
@@ -61,6 +62,7 @@ void print_board(const game_inst* instance) {
 }
 
 int main(void) {
+    srand(time(NULL));
     windowattr win = create_window(700, 700, "Hello World", 60);
     game_inst g = {};
 
